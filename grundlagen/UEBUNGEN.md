@@ -86,4 +86,4 @@ Das Programmstück ist fehlerhaft ;) Finden Sie den Fehler im Code. Was müsste 
 - anstatt zuerst zu kontrollieren ob `extras >= 3` sollte man zuerst `extras >= 5` kontrollieren. z.B. bei 10 extras kontrolliert 
 er zuerst ob es grösser/gleich 3 ist, was wahr ist, und somit wird der addon_discount auf 10 gesetzt, obwohl es 15% sein sollte. das hat der IDE von sich selbst bemerkt. 
 
-![IDE Screenshot](resources\ide_recognizing_logical_mistake.png)
+![IDE Screenshot](resources/ide_recognizing_logical_mistake.png)
