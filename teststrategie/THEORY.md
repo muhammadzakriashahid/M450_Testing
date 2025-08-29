@@ -1,6 +1,3 @@
-# Black-Box Test -> testing by trying to use product
-# White-Box Test -> testing knowing the code
-***
 # Welche Elemente braucht es für eine Teststrategie?
 ### Teststrategie und Planung
 - Strategie: beschreibt vorgehen beim Testen.
