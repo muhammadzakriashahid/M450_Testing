@@ -4,6 +4,7 @@
 ### Errors vs Mangel
 - Errors: an error is when a requirement is not met (actual behaviour does not match what was specified in the requirements), you know what was output going to be.
 - Mangel: a defect is when a requirement is not adequately (to satisfactory extent) met, for example a calculation is run correctly, but the result is not displayed correctly. here you don't know exactly, so something is missing.
+- a better example for Mangel would be something missing, like it's not a exactly an error, but would be good to have.
 ### Error Masking
 - occurs when one error/fault hides/prevents another underlying error from being detected. for example, in a calculator the function can divide by zero, but the input function does not allow the user to input zero, so the division by zero error is masked. another example would be if you save numbers as strings, and a you want to summ all those numbers. a test is something else then what i think.
 ### Criteria for good Tests
