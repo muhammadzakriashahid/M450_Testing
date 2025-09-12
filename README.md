@@ -1,5 +1,4 @@
 # M450_Application_Testing
-# M450_Application_Testing
 
 ## Tasks Completed
 - [Übung: Test-Strategie](./teststrategie/UEBUNGEN.md)
