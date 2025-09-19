@@ -1,0 +1,221 @@
+{
+  "main": {
+    "id": "b729880fc15f9690",
+    "type": "split",
+    "children": [
+      {
+        "id": "dbd25b431f5092c0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2cfd5256fe038b26",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "automation-testing/UEBUNGEN.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "UEBUNGEN"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2d5f4e404b950cd3",
+    "type": "split",
+    "children": [
+      {
+        "id": "414d748bbfbb064a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "166e68c3f209e751",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "150507567b75835e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "406604b08cf99fac",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "7eab5e3d24923a92",
+    "type": "split",
+    "children": [
+      {
+        "id": "be51bc6718129ad2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2408e0297cba74a4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "automation-testing/UEBUNGEN.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for UEBUNGEN"
+            }
+          },
+          {
+            "id": "c0b8c84798d38fd0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "automation-testing/UEBUNGEN.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from UEBUNGEN"
+            }
+          },
+          {
+            "id": "39b29c5d51c47eca",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "d09f4493ddc40a49",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "automation-testing/UEBUNGEN.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of UEBUNGEN"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "2cfd5256fe038b26",
+  "lastOpenFiles": [
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/@babel/helper-create-class-features-plugin/node_modules/semver/LICENSE",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/@babel/helper-create-class-features-plugin/node_modules/semver/range.bnf",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/@babel/helper-create-class-features-plugin/node_modules/semver/README.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/ua-parser-js/dist/ua-parser.min.js",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/whatwg-url/dist/utils.js",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/ua-parser-js/dist/ua-parser.pack.js",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/whatwg-url/dist/VoidFunction.js",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/socks-proxy-agent/dist/index.d.ts",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/socks-proxy-agent/dist/index.js.map",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/spdy/test/fixtures.js",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/spdy/test/server-test.js",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/spdy/test/client-test.js",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/cypress/node_modules/chalk/node_modules/supports-color/readme.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/@cypress/xvfb/node_modules/debug/CHANGELOG.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/@cypress/xvfb/node_modules/debug/README.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/@cypress/request/node_modules/tough-cookie/README.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/@cypress/request/node_modules/qs/CHANGELOG.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/@cypress/request/node_modules/qs/LICENSE.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/@cypress/request/node_modules/qs/README.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/@cypress/request/node_modules/form-data/CHANGELOG.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/@cypress/request/node_modules/form-data/README.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/verror/node_modules/core-util-is/README.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/slice-ansi/node_modules/color-name/README.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/slice-ansi/node_modules/color-convert/CHANGELOG.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/slice-ansi/node_modules/color-convert/README.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/slice-ansi/node_modules/ansi-styles/readme.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/log-update/node_modules/wrap-ansi/readme.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/log-update/node_modules/slice-ansi/readme.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/log-update/node_modules/color-name/README.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/log-update/node_modules/color-convert/README.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/log-update/node_modules/ansi-styles/readme.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/hasha/node_modules/type-fest/readme.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/global-dirs/node_modules/ini/README.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/extract-zip/node_modules/get-stream/readme.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/executable/node_modules/pify/readme.md",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/cypress/node_modules/universalify/README.md",
+    "automation-testing/resources/automated_testing_end-to-end_angular.png",
+    "automation-testing/resources/automated_testing_rest_spring.png",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/jasmine-core/images/jasmine_favicon.png",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/jasmine-core/images/jasmine-horizontal.svg",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/jasmine-core/images/jasmine-horizontal.png",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/psl/browserstack-logo.svg",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/retry/equation.gif",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/serve-index/public/icons/page_world.png",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/serve-index/public/icons/page_word.png",
+    "automation-testing/projects/spring-boot-angular-basic-lw2/src/main/js/my-app/node_modules/serve-index/public/icons/page_white_zip.png"
+  ]
+}
