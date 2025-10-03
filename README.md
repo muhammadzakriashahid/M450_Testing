@@ -6,3 +6,4 @@
 - [Übung: Grundlagen](./grundlagen/UEBUNGEN.md)
 - [Übung: Schnittstellen](./schnittstellen/UEBUNGEN.md)
 - [Übung: Automation-Testing](./automation-testing/UEBUNGEN.md)
+- [Übung: Testkonzept](./test-konzept/UEBUNGEN.md)
