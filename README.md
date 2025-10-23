@@ -7,3 +7,4 @@
 - [Übung: Schnittstellen](./schnittstellen/UEBUNGEN.md)
 - [Übung: Automation-Testing](./automation-testing/UEBUNGEN.md)
 - [Übung: Testkonzept](./test-konzept/UEBUNGEN.md)
+- [Übung: CI-CD](./ci-cd_pipelines/THEORY.md)
