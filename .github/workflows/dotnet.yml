@@ -1,0 +1,39 @@
+name: Backend CI Pipeline
+
+on:
+  push:
+    branches: [ main ]  # Trigger on pushes to main branch
+  pull_request:
+    branches: [ main ]  # Trigger on PRs to main branch
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest  # Use Ubuntu runner for .NET
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4  # Checkout your repository
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '9.0.0'  # Match your .NET version (from project.assets.json)
+
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: project/backend  # Adjust path to your backend folder
+
+    - name: Build the project
+      run: dotnet build --configuration Release --no-restore
+      working-directory: project/backend
+
+    - name: Run tests
+      run: dotnet test --configuration Release --no-build --verbosity normal
+      working-directory: project/backend  # Assumes tests are in the same solution
+
+    - name: Upload test results (optional)
+      uses: actions/upload-artifact@v3
+      if: always()  # Upload even if tests fail
+      with:
+        name: test-results
+        path: project/backend/**/TestResults/*.trx  # Path to test output files
