@@ -311,6 +311,9 @@ public
 # DynamoDB Local files
 .dynamodb/
 
+.db-smh
+.db-wal
+.vsidx
 # TernJS port file
 .tern-port
 
