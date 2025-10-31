@@ -20,16 +20,16 @@ jobs:
         dotnet-version: '8.0.x'  # Use .NET 8.0.x (9.0 not available in Actions)
 
     - name: Restore dependencies
-      run: dotnet restore
-      working-directory: project/backend  # Adjust path to your backend folder
+      run: dotnet restore quiz-app/quiz-app.sln  # Specify the solution file
+      working-directory: project/backend  # Restore from the backend folder
 
     - name: Build the project
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build quiz-app/quiz-app.sln --configuration Release --no-restore  # Specify the solution file
       working-directory: project/backend
 
     - name: Run tests with coverage
-      run: dotnet test --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./TestResults
-      working-directory: project/backend  # Runs tests and collects coverage in ./TestResults
+      run: dotnet test quiz-app/quiz-app.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./TestResults  # Specify the solution file
+      working-directory: project/backend  # Runs tests and collects coverage in ./TestResults (project/backend/TestResults)
 
     - name: Upload test results (optional)
       uses: actions/upload-artifact@v4
@@ -42,5 +42,5 @@ jobs:
       uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        directory: ./TestResults/  # Directory where coverage files are saved
+        directory: project/backend/TestResults/  # Correct path relative to workspace root
         fail_ci_if_error: false  # Don't fail CI if upload fails
