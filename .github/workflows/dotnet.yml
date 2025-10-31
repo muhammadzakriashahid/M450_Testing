@@ -32,7 +32,7 @@ jobs:
       working-directory: project/backend  # Assumes tests are in the same solution
 
     - name: Upload test results (optional)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()  # Upload even if tests fail
       with:
         name: test-results
