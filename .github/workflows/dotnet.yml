@@ -21,15 +21,15 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: project/backend  # Adjust path to your backend folder
+      working-directory: project/backend/quiz-app  # Adjust path to your backend folder
 
     - name: Build the project
       run: dotnet build --configuration Release --no-restore
-      working-directory: project/backend
+      working-directory: project/backend/quiz-app
 
     - name: Run tests
       run: dotnet test --configuration Release --no-build --verbosity normal
-      working-directory: project/backend  # Assumes tests are in the same solution
+      working-directory: project/backend/quiz-appTests1  # Assumes tests are in the same solution
 
     - name: Upload test results (optional)
       uses: actions/upload-artifact@v4
