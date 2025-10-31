@@ -17,7 +17,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '9.0.0'  # Match your .NET version (from project.assets.json)
+        dotnet-version: '8.0.x'  # Use a released SDK (9.0 is not available)
 
     - name: Restore dependencies
       run: dotnet restore
