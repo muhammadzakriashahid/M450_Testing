@@ -1,0 +1,60 @@
+<div class="nav-bar mb-4">
+  <h3 class="nav-title">Dashboard</h3>
+  <div class="nav-buttons">
+    <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+  </div>
+</div>
+<h2>Quiz History</h2>
+<button (click)="goToQuiz()">Take New Quiz</button>
+
+<div *ngIf="quizzes.length === 0" class="no-quizzes">
+  <p>No quizzes solved yet.</p>
+</div>
+
+<div *ngFor="let quiz of quizzes; let i = index" class="quiz-card">
+  <div class="quiz-header" (click)="toggleQuiz(quiz.id)">
+    <div class="header-left">
+      <h3>Quiz #{{ quiz.id }}</h3>
+      <span class="quiz-date">{{ quiz.completedAt | date:'medium' }}</span>
+    </div>
+    <div class="header-right">
+      <div class="score-info">
+        <span class="score">{{ quiz.correctAnswers }}/{{ quiz.totalQuestions }}</span>
+        <span class="percentage" [class.pass]="quiz.percentage >= 60" [class.fail]="quiz.percentage < 60">
+          {{ quiz.percentage | number:'1.0-1' }}%
+        </span>
+      </div>
+      <button class="expand-btn" type="button">
+        <span *ngIf="!isExpanded(quiz.id)">▼</span>
+        <span *ngIf="isExpanded(quiz.id)">▲</span>
+      </button>
+    </div>
+  </div>
+  
+  <div class="questions-list" *ngIf="isExpanded(quiz.id)">
+    <div *ngFor="let answer of quiz.answers; let j = index" class="question-item" [class.correct]="answer.isCorrect" [class.incorrect]="!answer.isCorrect">
+      <div class="question-number">Q{{ j + 1 }}</div>
+      <div class="question-content">
+        <p class="question-text" [innerHTML]="answer.question"></p>
+        <div class="question-meta">
+          <span class="badge badge-{{ answer.difficulty.toLowerCase() }}">{{ answer.difficulty }}</span>
+          <span class="category">{{ answer.category }}</span>
+        </div>
+        <div class="answers">
+          <div class="answer-row">
+            <strong>Your answer:</strong>
+            <span [innerHTML]="answer.userAnswer" [class.wrong]="!answer.isCorrect"></span>
+          </div>
+          <div class="answer-row" *ngIf="!answer.isCorrect">
+            <strong>Correct answer:</strong>
+            <span [innerHTML]="answer.correctAnswer" class="correct-text"></span>
+          </div>
+        </div>
+      </div>
+      <div class="result-icon">
+        <span *ngIf="answer.isCorrect">✓</span>
+        <span *ngIf="!answer.isCorrect">✗</span>
+      </div>
+    </div>
+  </div>
+</div>

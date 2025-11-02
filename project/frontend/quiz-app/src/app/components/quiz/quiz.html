@@ -1,0 +1,123 @@
+<div class="container my-5">
+  <div class="nav-bar mb-4">
+    <h3 class="nav-title">Trivia Master</h3>
+    <div class="nav-buttons">
+      <button class="btn btn-outline-primary me-2" (click)="goToDashboard()">Dashboard</button>
+      <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+    </div>
+  </div>
+  
+  <div class="text-center">
+    <h1 class="app-title fade-in">Trivia Master</h1>
+  </div>
+  
+  <!-- Loading state -->
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-3 fs-5">Loading your trivia questions...</p>
+  </div>
+  
+  <!-- Error state -->
+  <div *ngIf="error" class="alert alert-danger shadow">
+    <p class="mb-3 fs-5">Failed to load questions. Please check your connection and try again.</p>
+    <button class="btn btn-primary" (click)="loadQuestions()">
+      <i class="bi bi-arrow-clockwise me-2"></i>Retry
+    </button>
+  </div>
+
+  <!-- Quiz in progress -->
+  <div *ngIf="!loading && !error && !showResults && questions.length > 0" class="card shadow slide-up quiz-card">
+    <div class="progress" style="height: 8px; border-radius: 8px 8px 0 0;">
+      <div class="progress-bar" role="progressbar" 
+           [style.width.%]="(currentQuestionIndex / questions.length) * 100" 
+           aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="card-header py-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="question-counter" style="margin: 2%">Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</div>
+        <span class="badge difficulty-badge" [ngClass]="getDifficultyClass()">{{ currentQuestion?.difficulty }}</span>
+      </div>
+    </div>
+    <div class="card-body p-4">
+      <h5 class="card-title fs-4 mb-4" [innerHTML]="currentQuestion?.category"></h5>
+      <p class="card-text fs-5 mb-4" [innerHTML]="currentQuestion?.question"></p>
+      
+      <div class="answers-container mt-4">
+        <button 
+          *ngFor="let answer of currentQuestion?.allAnswers" 
+          class="answer-btn list-group-item list-group-item-action mb-3 py-3 px-4 fs-5"
+          [class.active]="isSelected(answer)"
+          (click)="selectAnswer(answer)"
+          [innerHTML]="answer">
+        </button>
+      </div>
+    </div>
+    <div class="card-footer py-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="text-muted" [class.visually-hidden]="selectedAnswer">
+          <i class="bi bi-info-circle me-2"></i>Select an answer to continue
+        </span>
+        <div class="next-btn-container">
+          <button 
+            class="btn btn-primary btn-lg next-button" 
+            [disabled]="!selectedAnswer" 
+            (click)="nextQuestion()">
+            {{ currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'Finish Quiz' }}
+            <i class="bi bi-arrow-right ms-2"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results screen -->
+  <div *ngIf="showResults" class="card shadow slide-up">
+    <div class="card-header py-3">
+      <h5 class="fw-bold mb-0">Quiz Results</h5>
+    </div>
+    <div class="card-body p-5 results-container">
+      <h2 class="display-4 mb-4">Quiz Complete!</h2>
+      
+      <!-- Score circle -->
+      <div class="score-circle mb-4">
+        <div class="circle-inner">
+          <span class="score-text">{{ (correctAnswers / questions.length) * 100 | number: '1.0-0' }}%</span>
+        </div>
+      </div>
+      
+      <h3 class="mb-4">You scored {{ correctAnswers }} out of {{ questions.length }}!</h3>
+      
+      <!-- Different messages based on score -->
+      <p class="fs-4 mb-4" *ngIf="(correctAnswers / questions.length) >= 0.8">
+        <i class="bi bi-trophy-fill me-2 text-warning"></i>
+        Excellent! You're a trivia master!
+      </p>
+      
+      <p class="fs-4 mb-4" *ngIf="(correctAnswers / questions.length) >= 0.6 && (correctAnswers / questions.length) < 0.8">
+        <i class="bi bi-star-fill me-2 text-primary"></i>
+        Great job! You know your stuff!
+      </p>
+      
+      <p class="fs-4 mb-4" *ngIf="(correctAnswers / questions.length) >= 0.4 && (correctAnswers / questions.length) < 0.6">
+        <i class="bi bi-award me-2 text-info"></i>
+        Not bad! You've got potential!
+      </p>
+      
+      <p class="fs-4 mb-4" *ngIf="(correctAnswers / questions.length) < 0.4">
+        <i class="bi bi-book me-2 text-muted"></i>
+        Keep practicing! You'll get better!
+      </p>
+      
+      <div class="mt-5">
+        <button class="btn btn-primary btn-lg me-3" (click)="restartQuiz()">
+          <i class="bi bi-arrow-repeat me-2"></i>Take Another Quiz
+        </button>
+        <button class="btn btn-secondary btn-lg" (click)="goToDashboard()">
+          <i class="bi bi-house me-2"></i>Go to Dashboard
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
