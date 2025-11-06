@@ -24,7 +24,6 @@ namespace quiz_app.Services
             }
             catch (JsonException)
             {
-                // If the response is not valid JSON (e.g., empty string), return empty list
                 return new List<QuizQuestion>();
             }
         }

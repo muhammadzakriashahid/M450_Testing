@@ -32,6 +32,24 @@ namespace quiz_app.Controllers
             var username = User.Identity?.Name;
             if (string.IsNullOrEmpty(username)) return Unauthorized();
 
+            // avoid relying on frontend
+            if (result != null)
+            {
+                if (result.TotalQuestions > 0)
+                {
+                    result.Percentage = Math.Round(result.CorrectAnswers / (double)result.TotalQuestions * 100.0, 4);
+                }
+                else
+                {
+                    result.Percentage = 0;
+                }
+
+                if (result.CompletedAt == default)
+                {
+                    result.CompletedAt = DateTime.UtcNow;
+                }
+            }
+
             _userService.AddSolvedQuiz(username, result);
             return Ok();
         }
