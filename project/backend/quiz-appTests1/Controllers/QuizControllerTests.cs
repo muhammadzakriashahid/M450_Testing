@@ -176,5 +176,57 @@ namespace quiz_appTests1.Controllers
             Assert.AreEqual("4", answer.UserAnswer);
             Assert.IsTrue(answer.IsCorrect);
         }
+        [TestMethod]
+        public async Task Get_ReturnsQuestions_FromQuizService()
+        {
+            // arrange
+            var controller = CreateControllerWithUser();
+            var amount = 1;
+
+            // act
+            var actionResult = await controller.Get(amount);
+
+            // assert - should return OkObjectResult with list of questions from the stubbed handler
+            var ok = actionResult.Result as OkObjectResult;
+            Assert.IsNotNull(ok, "Get should return OkObjectResult");
+            var list = ok.Value as List<QuizQuestion>;
+            Assert.IsNotNull(list, "Returned value should be a list of QuizQuestion");
+            Assert.AreEqual(amount, list.Count, "Number of questions returned should match requested amount (stub returns 1)");
+        }
+
+        [TestMethod]
+        public void MarkQuizSolved_ComputesPercentage_WhenTotalQuestionsPositive()
+        {
+            // arrange
+            var username = "percentUser";
+            _userServiceMock.Object.Register(username, "pass");
+            var controller = CreateControllerWithUser(username);
+
+            var quizResult = new QuizResult
+            {
+                TotalQuestions = 3,
+                CorrectAnswers = 2,
+                Answers = new List<QuizAnswer>()
+            };
+
+            var expected = Math.Round(quizResult.CorrectAnswers / (double)quizResult.TotalQuestions * 100.0, 4);
+
+            // act
+            var postResult = controller.MarkQuizSolved(quizResult);
+            Assert.IsInstanceOfType(postResult, typeof(OkResult), "MarkQuizSolved should return Ok for authenticated user");
+
+            var getResult = controller.GetSolvedQuizzes();
+            var ok = getResult as OkObjectResult;
+            Assert.IsNotNull(ok, "GetSolvedQuizzes should return OkObjectResult");
+
+            var saved = ok.Value as List<QuizResult>;
+            Assert.IsNotNull(saved, "Saved quizzes list should not be null");
+            Assert.IsTrue(saved.Count > 0, "There should be at least one saved QuizResult");
+
+            var latest = saved[saved.Count - 1];
+
+            // assert percentage calculated and stored correctly
+            Assert.AreEqual(expected, latest.Percentage, 0.0001, "Percentage should be computed and rounded correctly when TotalQuestions > 0");
+        }
     }
 }
