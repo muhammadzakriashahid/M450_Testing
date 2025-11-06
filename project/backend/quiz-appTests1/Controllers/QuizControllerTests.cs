@@ -138,5 +138,43 @@ namespace quiz_appTests1.Controllers
             Assert.IsTrue(latest.CompletedAt.ToUniversalTime() >= before.ToUniversalTime(), "CompletedAt should be >= before time");
             Assert.IsTrue(latest.CompletedAt.ToUniversalTime() <= after.ToUniversalTime().AddSeconds(1), "CompletedAt should be recent");
         }
+
+         [TestMethod]
+        public void QuizAnswer_Defaults_AreEmptyAndFalse()
+        {
+            // arrange & act
+            var answer = new QuizAnswer();
+
+            // assert defaults
+            Assert.AreEqual(string.Empty, answer.Question, "Default Question should be empty string");
+            Assert.AreEqual(string.Empty, answer.Category, "Default Category should be empty string");
+            Assert.AreEqual(string.Empty, answer.Difficulty, "Default Difficulty should be empty string");
+            Assert.AreEqual(string.Empty, answer.CorrectAnswer, "Default CorrectAnswer should be empty string");
+            Assert.AreEqual(string.Empty, answer.UserAnswer, "Default UserAnswer should be empty string");
+            Assert.IsFalse(answer.IsCorrect, "Default IsCorrect should be false");
+        }
+
+        [TestMethod]
+        public void QuizAnswer_CanSetAndGetProperties()
+        {
+            // arrange
+            var answer = new QuizAnswer
+            {
+                Question = "What is 2+2?",
+                Category = "Math",
+                Difficulty = "Easy",
+                CorrectAnswer = "4",
+                UserAnswer = "4",
+                IsCorrect = true
+            };
+
+            // act & assert
+            Assert.AreEqual("What is 2+2?", answer.Question);
+            Assert.AreEqual("Math", answer.Category);
+            Assert.AreEqual("Easy", answer.Difficulty);
+            Assert.AreEqual("4", answer.CorrectAnswer);
+            Assert.AreEqual("4", answer.UserAnswer);
+            Assert.IsTrue(answer.IsCorrect);
+        }
     }
 }
