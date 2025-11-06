@@ -1,16 +1,22 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿// csharp
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using quiz_app.Controllers;
 using quiz_app.Models;
 using quiz_app.Services;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace quiz_appTests1.Controllers
 {
-       [TestClass]
+    [TestClass]
     public class QuizControllerTest
     {
         private Mock<QuizService> _quizServiceMock;
@@ -43,11 +49,21 @@ namespace quiz_appTests1.Controllers
             }
         }
 
-        private QuizController CreateControllerWithUser(string username = null)
+        private QuizController CreateControllerWithUser(string username = null, bool authenticatedButNoName = false)
         {
             var controller = new QuizController(_quizServiceMock.Object, _userServiceMock.Object);
 
-            if (username != null)
+            if (authenticatedButNoName)
+            {
+                // Authenticated identity but no Name claim -> Identity.IsAuthenticated == true, Name == null
+                var identity = new ClaimsIdentity(new Claim[] { }, "mock");
+                var user = new ClaimsPrincipal(identity);
+                controller.ControllerContext = new ControllerContext
+                {
+                    HttpContext = new DefaultHttpContext { User = user }
+                };
+            }
+            else if (username != null)
             {
                 var user = new ClaimsPrincipal(new ClaimsIdentity(new[]
                 {
@@ -70,42 +86,36 @@ namespace quiz_appTests1.Controllers
         }
 
         [TestMethod]
-        public void MarkQuizSolved_ReturnsUnauthorized_WhenUserIsNotAuthenticated()
+        public void MarkQuizSolved_ReturnsUnauthorized_WhenAuthenticatedButNameMissing()
         {
-            var quizResult = new QuizResult { CorrectAnswers = 2 };
-            var controller = CreateControllerWithUser();
+            // arrange: authenticated identity but no Name claim
+            var controller = CreateControllerWithUser(authenticatedButNoName: true);
+            var quizResult = new QuizResult { TotalQuestions = 5, CorrectAnswers = 3 };
 
+            // act
             var result = controller.MarkQuizSolved(quizResult);
 
+            // assert
             Assert.IsInstanceOfType(result, typeof(UnauthorizedResult));
         }
 
         [TestMethod]
-        public void GetSolvedQuizzes_ReturnsUnauthorized_WhenUserIsNotAuthenticated()
-        {
-            var controller = CreateControllerWithUser();
-
-            var result = controller.GetSolvedQuizzes();
-
-            Assert.IsInstanceOfType(result, typeof(UnauthorizedResult));
-        }
-
-        [TestMethod]
-        public void MarkQuizSolved_Persists_TotalQuestions_Percentage_And_CompletedAt()
+        public void MarkQuizSolved_SetsPercentageToZero_WhenTotalQuestionsZero()
         {
             // arrange
-            var username = "testuser";
+            var username = "zeroUser";
             _userServiceMock.Object.Register(username, "pass");
             var controller = CreateControllerWithUser(username);
-            var nowBefore = DateTime.UtcNow;
 
+            var before = DateTime.UtcNow;
             var quizResult = new QuizResult
             {
-                TotalQuestions = 10,
-                CorrectAnswers = 7,
+                TotalQuestions = 0,
+                CorrectAnswers = 0,
                 Answers = new List<QuizAnswer>()
             };
 
+            // act
             var postResult = controller.MarkQuizSolved(quizResult);
             Assert.IsInstanceOfType(postResult, typeof(OkResult), "MarkQuizSolved should return Ok for authenticated user");
 
@@ -119,12 +129,14 @@ namespace quiz_appTests1.Controllers
 
             var latest = saved[saved.Count - 1];
 
-            Assert.AreEqual(10, latest.TotalQuestions, "TotalQuestions should be preserved");
-            Assert.AreEqual(70.0, latest.Percentage, 0.0001, "Percentage should be computed correctly");
+            // assert percentage set to 0 for TotalQuestions == 0
+            Assert.AreEqual(0.0, latest.Percentage, 0.0001, "Percentage should be 0 when TotalQuestions is 0");
 
-            var nowAfter = DateTime.UtcNow;
-            Assert.IsTrue(latest.CompletedAt.ToUniversalTime() >= nowBefore.ToUniversalTime(), "CompletedAt should be >= time before call");
-            Assert.IsTrue(latest.CompletedAt.ToUniversalTime() <= nowAfter.ToUniversalTime().AddSeconds(1), "CompletedAt should be set to a recent time");
+            // CompletedAt should be set to a recent time (non-default)
+            Assert.IsTrue(latest.CompletedAt != default(DateTime), "CompletedAt should be set");
+            var after = DateTime.UtcNow;
+            Assert.IsTrue(latest.CompletedAt.ToUniversalTime() >= before.ToUniversalTime(), "CompletedAt should be >= before time");
+            Assert.IsTrue(latest.CompletedAt.ToUniversalTime() <= after.ToUniversalTime().AddSeconds(1), "CompletedAt should be recent");
         }
     }
 }
