@@ -9,6 +9,7 @@ I had to use Callbase when i wanted the default behavior for non-mocked methods.
 I also had an issue in the AuthController with testing the JWT, since i had never knew that i can test JWT tokens before this project, so i had to do some research on how to test JWT tokens in unit tests.
 And I think that i Understood it, but actually i didn't. because the token is signed and contains timestamps and unique values, so the token string changes every run, making it impossible to have a fixed expected value for comparison in tests. so instead of spending a lot of time here i mainly focused on other stuff. I also did not test the `Program.cs` file because it mainly contains configuration code that is not typically unit tested.
 ### Class Diagram
+<img src="./project/backend_class_diagramm.svg" width="800"  />
 
 ## Test-konzept nach IEEE 829
 #### Introduction 
