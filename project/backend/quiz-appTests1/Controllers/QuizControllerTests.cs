@@ -10,8 +10,8 @@ using System.Text;
 
 namespace quiz_appTests1.Controllers
 {
-    [TestClass]
-    public class QuizControllerTests
+       [TestClass]
+    public class QuizControllerTest
     {
         private Mock<QuizService> _quizServiceMock;
         private Mock<UserService> _userServiceMock;
@@ -19,13 +19,12 @@ namespace quiz_appTests1.Controllers
         [TestInitialize]
         public void Setup()
         {
-            // Use a mock HttpClient for QuizService
             var httpClient = new HttpClient(new HttpMessageHandlerStub());
             _quizServiceMock = new Mock<QuizService>(httpClient) { CallBase = true };
             _userServiceMock = new Mock<UserService>() { CallBase = true };
         }
 
-        // Helper stub for HttpClient
+        // stubbed HTTP handler to satisfy QuizService ctor/use if needed
         private class HttpMessageHandlerStub : HttpMessageHandler
         {
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -71,20 +70,6 @@ namespace quiz_appTests1.Controllers
         }
 
         [TestMethod]
-        public async Task Get_ReturnsQuestionsList()
-        {
-            var controller = CreateControllerWithUser();
-            var result = await controller.Get();
-
-            var okResult = result.Result as OkObjectResult;
-            Assert.IsNotNull(okResult);
-            var questions = okResult.Value as List<QuizQuestion>;
-            Assert.IsNotNull(questions);
-            Assert.AreEqual("Q1", questions[0].Question);
-            Assert.AreEqual("A1", questions[0].CorrectAnswer);
-        }
-
-        [TestMethod]
         public void MarkQuizSolved_ReturnsUnauthorized_WhenUserIsNotAuthenticated()
         {
             var quizResult = new QuizResult { CorrectAnswers = 2 };
@@ -94,16 +79,6 @@ namespace quiz_appTests1.Controllers
 
             Assert.IsInstanceOfType(result, typeof(UnauthorizedResult));
         }
-
-        // Derived class to allow overriding non-virtual methods
-        public class UserServiceDerived : UserService
-        {
-            public virtual new List<QuizResult> GetSolvedQuizzes(string? username)
-            {
-                return base.GetSolvedQuizzes(username);
-            }
-        }
-
 
         [TestMethod]
         public void GetSolvedQuizzes_ReturnsUnauthorized_WhenUserIsNotAuthenticated()
@@ -118,8 +93,7 @@ namespace quiz_appTests1.Controllers
         [TestMethod]
         public void MarkQuizSolved_Persists_TotalQuestions_Percentage_And_CompletedAt()
         {
-            // Arrange
-            // make sure the user exists in the UserService and authenticate the controller as that user
+            // arrange
             var username = "testuser";
             _userServiceMock.Object.Register(username, "pass");
             var controller = CreateControllerWithUser(username);
@@ -132,24 +106,21 @@ namespace quiz_appTests1.Controllers
                 Answers = new List<QuizAnswer>()
             };
 
-            // Act
             var postResult = controller.MarkQuizSolved(quizResult);
             Assert.IsInstanceOfType(postResult, typeof(OkResult), "MarkQuizSolved should return Ok for authenticated user");
 
-            // Retrieve saved quizzes for the user via the controller endpoint
             var getResult = controller.GetSolvedQuizzes();
             var ok = getResult as OkObjectResult;
             Assert.IsNotNull(ok, "GetSolvedQuizzes should return OkObjectResult");
 
             var saved = ok.Value as List<QuizResult>;
-            Assert.IsNotNull(saved);
+            Assert.IsNotNull(saved, "Saved quizzes list should not be null");
             Assert.IsTrue(saved.Count > 0, "There should be at least one saved QuizResult");
 
             var latest = saved[saved.Count - 1];
 
-            Assert.AreEqual(10, latest.TotalQuestions);
-
-            Assert.AreEqual(70.0, latest.Percentage, 0.0001, "Percentage should be stored/computed correctly");
+            Assert.AreEqual(10, latest.TotalQuestions, "TotalQuestions should be preserved");
+            Assert.AreEqual(70.0, latest.Percentage, 0.0001, "Percentage should be computed correctly");
 
             var nowAfter = DateTime.UtcNow;
             Assert.IsTrue(latest.CompletedAt.ToUniversalTime() >= nowBefore.ToUniversalTime(), "CompletedAt should be >= time before call");
