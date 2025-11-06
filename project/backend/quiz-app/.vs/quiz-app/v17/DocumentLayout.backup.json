@@ -1,13 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Shah\\OneDrive - TBZ\\TBZ\\IT_Module\\5_Semester\\1_Quartal\\M450_Application-Testing\\M450_Testing\\project\\backend\\quiz-app\\",
+  "WorkspaceRootPath": "C:\\Users\\muhammad\\OneDrive - TBZ\\TBZ\\IT_Module\\5_Semester\\1_Quartal\\M450_Application-Testing\\M450_Testing\\project\\backend\\quiz-app\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E428F34A-2D12-4144-903C-986925B554C9}|..\\quiz-appTests1\\quiz-appTests1.csproj|c:\\users\\shah\\onedrive - tbz\\tbz\\it_module\\5_semester\\1_quartal\\m450_application-testing\\m450_testing\\project\\backend\\quiz-apptests1\\controllers\\weatherforecastcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4A5F3B1A-1FC9-CFCC-A69E-8CE3DCEB08D5}|quiz-app.csproj|c:\\users\\shah\\onedrive - tbz\\tbz\\it_module\\5_semester\\1_quartal\\m450_application-testing\\m450_testing\\project\\backend\\quiz-app\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A5F3B1A-1FC9-CFCC-A69E-8CE3DCEB08D5}|quiz-app.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E428F34A-2D12-4144-903C-986925B554C9}|..\\quiz-appTests1\\quiz-appTests1.csproj|c:\\users\\muhammad\\onedrive - tbz\\tbz\\it_module\\5_semester\\1_quartal\\m450_application-testing\\m450_testing\\project\\backend\\quiz-apptests1\\controllers\\authcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,21 +13,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "C:\\Users\\Shah\\OneDrive - TBZ\\TBZ\\IT_Module\\5_Semester\\1_Quartal\\M450_Application-Testing\\M450_Testing\\project\\backend\\quiz-app\\Controllers\\WeatherForecastController.cs",
-              "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",
-              "ToolTip": "C:\\Users\\Shah\\OneDrive - TBZ\\TBZ\\IT_Module\\5_Semester\\1_Quartal\\M450_Application-Testing\\M450_Testing\\project\\backend\\quiz-app\\Controllers\\WeatherForecastController.cs*",
-              "RelativeToolTip": "Controllers\\WeatherForecastController.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T08:34:38.117Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -63,14 +46,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WeatherForecastControllerTests.cs",
-              "DocumentMoniker": "C:\\Users\\Shah\\OneDrive - TBZ\\TBZ\\IT_Module\\5_Semester\\1_Quartal\\M450_Application-Testing\\M450_Testing\\project\\backend\\quiz-appTests1\\Controllers\\WeatherForecastControllerTests.cs",
-              "RelativeDocumentMoniker": "..\\quiz-appTests1\\Controllers\\WeatherForecastControllerTests.cs",
-              "ToolTip": "C:\\Users\\Shah\\OneDrive - TBZ\\TBZ\\IT_Module\\5_Semester\\1_Quartal\\M450_Application-Testing\\M450_Testing\\project\\backend\\quiz-appTests1\\Controllers\\WeatherForecastControllerTests.cs",
-              "RelativeToolTip": "..\\quiz-appTests1\\Controllers\\WeatherForecastControllerTests.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Title": "AuthControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\muhammad\\OneDrive - TBZ\\TBZ\\IT_Module\\5_Semester\\1_Quartal\\M450_Application-Testing\\M450_Testing\\project\\backend\\quiz-appTests1\\Controllers\\AuthControllerTests.cs",
+              "RelativeDocumentMoniker": "..\\quiz-appTests1\\Controllers\\AuthControllerTests.cs",
+              "ToolTip": "C:\\Users\\muhammad\\OneDrive - TBZ\\TBZ\\IT_Module\\5_Semester\\1_Quartal\\M450_Application-Testing\\M450_Testing\\project\\backend\\quiz-appTests1\\Controllers\\AuthControllerTests.cs",
+              "RelativeToolTip": "..\\quiz-appTests1\\Controllers\\AuthControllerTests.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAjwD4AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T08:35:05.319Z",
+              "WhenOpened": "2025-11-02T15:55:51.601Z",
               "EditorCaption": ""
             }
           ]
